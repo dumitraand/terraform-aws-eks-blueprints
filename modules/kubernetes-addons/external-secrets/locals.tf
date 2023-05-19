@@ -49,6 +49,7 @@ locals {
     create_kubernetes_service_account   = true
     create_service_account_secret_token = try(local.helm_config["create_service_account_secret_token"], false)
     irsa_iam_policies                   = concat([aws_iam_policy.external_secrets.arn], var.irsa_policies)
+    tags                                = var.addon_context["tags"]
   }
 
   argocd_gitops_config = {
